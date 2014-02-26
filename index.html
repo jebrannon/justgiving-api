@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>My Kickass JustGiving search</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script> 
+</head>
+<body>
+
+JustGiving AJAX Search Quick Example
+
+<br/><br/>
+
+<script type="text/javascript">
+/ * Excuse my inline jQuery, for example purposes only! */
+
+function DoSearch()
+{   
+    var searchTerm = $('#searchText').val();    
+    var url = "https://api-staging.justgiving.com/7a69c059/v1/charity/search?q=" + encodeURIComponent(searchTerm) + "&format=json&callback=?";
+
+    $('#hint').text("Calling: " + url);
+
+    jQuery.getJSON(url, function(data) {
+
+        $('#results').html("&nbsp;");
+
+        jQuery.each(data.charitySearchResults, function(index) {
+            var dataItem = data.charitySearchResults[index]
+
+            var newItem = "Charity Id: " + dataItem.charityId + "<br/>";
+            newItem += "Name: " + dataItem.name + "<br/>"; 
+            newItem += "Description: " + dataItem.description + "<br/>";
+
+            $('#results').html($('#results').html() + "<hr/>" + newItem);
+
+          });   
+    }); 
+}
+
+</script>
+
+<div id="hint"></div>
+<input type="textbox" id="searchText" />
+<input type="button" value="Search" id="searchButton" onclick="DoSearch()"/>
+
+<div id="results"></div>
+
+</body>
+<html>
