@@ -1,48 +1,53 @@
 <html>
-<head>
-<title>My Kickass JustGiving search</title>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script> 
-</head>
-<body>
+    <head>
+        <title>My Kickass JustGiving search</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
 
-JustGiving AJAX Search Quick Example
+        <script data-main="js/application/bootstrap" src="js/libs/require.js"></script>
+    </head>
+        <body>
 
-<br/><br/>
+            <h1>JustGiving API</h1>
 
-<script type="text/javascript">
-/ * Excuse my inline jQuery, for example purposes only! */
 
-function DoSearch()
-{   
-    var searchTerm = $('#searchText').val();    
-    var url = "https://api-staging.justgiving.com/7a69c059/v1/charity/search?q=" + encodeURIComponent(searchTerm) + "&format=json&callback=?";
 
-    $('#hint').text("Calling: " + url);
+            <script type="text/javascript">
+                / * Excuse my inline jQuery, for example purposes only! */
 
-    jQuery.getJSON(url, function(data) {
+                var eventId = 594387;
+                var charityId = 2013;
+                var limit = 100;
 
-        $('#results').html("&nbsp;");
+                function DoSearch() {   
+                    
+                    var url = "https://api.justgiving.com/7a69c059/v1/fundraising/pages/Alastair-Morrison";
+                    // var url = "https://api.justgiving.com/7a69c059/v1/fundraising/search?charityId=" + charityId + "&eventId=" + eventId + "&pageSize=" + limit + "&format=json&callback=?";
 
-        jQuery.each(data.charitySearchResults, function(index) {
-            var dataItem = data.charitySearchResults[index]
+                    console.log(url);
 
-            var newItem = "Charity Id: " + dataItem.charityId + "<br/>";
-            newItem += "Name: " + dataItem.name + "<br/>"; 
-            newItem += "Description: " + dataItem.description + "<br/>";
 
-            $('#results').html($('#results').html() + "<hr/>" + newItem);
+                    jQuery.getJSON(url, function(data) {
 
-          });   
-    }); 
-}
+                        $('#results').html("&nbsp;");
 
-</script>
+                        console.log(data)
 
-<div id="hint"></div>
-<input type="textbox" id="searchText" />
-<input type="button" value="Search" id="searchButton" onclick="DoSearch()"/>
+                        jQuery.each(data.SearchResults, function(index) {
+                            var dataItem = data.SearchResults[index]
 
-<div id="results"></div>
 
-</body>
+                            var newItem = "Event Id: " + dataItem.EventId + "<br/>";
+                            newItem += "EventName: " + dataItem.EventName + "<br/>"; 
+
+                            $('#results').html($('#results').html() + "<hr/>" + newItem);
+
+                          });   
+                    }); 
+                }
+
+                // DoSearch();
+
+            </script>
+            <div id="results"></div>
+        </body>
 <html>
