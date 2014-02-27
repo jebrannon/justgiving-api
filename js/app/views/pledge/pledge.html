@@ -1,0 +1,10 @@
+<p>Hello from backbone!</p>
+
+<!-- templates/twitter/list.html -->
+<ul class="pledges">
+<% _.each(pledges, function (pledge) { %>
+
+  <li><%= pledge.get('PageUrl') %></li> 
+
+<% }); %>
+</ul>

@@ -20,10 +20,10 @@
 
                 function DoSearch() {   
                     
-                    var url = "https://api.justgiving.com/7a69c059/v1/fundraising/pages/Alastair-Morrison";
-                    // var url = "https://api.justgiving.com/7a69c059/v1/fundraising/search?charityId=" + charityId + "&eventId=" + eventId + "&pageSize=" + limit + "&format=json&callback=?";
+                    // var url = "https://api.justgiving.com/7a69c059/v1/fundraising/pages/Alastair-Morrison";
+                    var url = "https://api.justgiving.com/7a69c059/v1/fundraising/search?charityId=" + charityId + "&eventId=" + eventId + "&pageSize=" + limit + "&format=json&callback=?";
 
-                    console.log(url);
+
 
 
                     jQuery.getJSON(url, function(data) {
@@ -32,16 +32,6 @@
 
                         console.log(data)
 
-                        jQuery.each(data.SearchResults, function(index) {
-                            var dataItem = data.SearchResults[index]
-
-
-                            var newItem = "Event Id: " + dataItem.EventId + "<br/>";
-                            newItem += "EventName: " + dataItem.EventName + "<br/>"; 
-
-                            $('#results').html($('#results').html() + "<hr/>" + newItem);
-
-                          });   
                     }); 
                 }
 

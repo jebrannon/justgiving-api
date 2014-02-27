@@ -2,16 +2,16 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'views/index/index',
+	'views/pledge/pledge',
 	], 
-	function($, _, Backbone, indexView) {
+	function($, _, Backbone, pledge) {
 		var AppRouter = Backbone.Router.extend({
 			routes: {
 				'*actions': 'index'
 			},
 
 			index: function() {
-				indexView.render();
+				pledge.render();
 			}
 		});
 
