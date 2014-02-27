@@ -2,7 +2,7 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'text!views/index/helpers/index.html',
+	'text!views/index/index.html',
 	], function($, _, Backbone, indexTemplate) {
 		var indexView = Backbone.View.extend({
 			el: 'body',
