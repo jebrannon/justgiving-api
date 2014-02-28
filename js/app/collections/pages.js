@@ -3,11 +3,21 @@ define([
 	'underscore',
 	'backbone',
 	'app/config',
-	], function($, _, Backbone, Config) {
+	'app/models/page',
+	], function($, _, Backbone, Config, Page) {
 		var Pages = Backbone.Collection.extend({
-			// model: 
 
-			url: Config.justgiving.url + Config.justgiving.apiKey + "/v1/fundraising/search?charityId=" + Config.justgiving.charityId + "&eventId=" + Config.justgiving.eventId + "&pageSize=" + Config.justgiving.limit + "&format=json&callback=?",
+			//  Default properties
+			baseUrl: Config.justgiving.url,
+			apiKey: Config.justgiving.apiKey,
+			charityId: Config.justgiving.charityId,
+			eventId: Config.justgiving.eventId,
+			resultLimit: Config.justgiving.limit,
+
+			//  
+			initialize: function() {
+				this.url = this.baseUrl + this.apiKey + "/v1/fundraising/search?charityId=" + this.charityId + "&eventId=" + this.eventId + "&pageSize=" + this.resultLimit + "&format=json&callback=?";
+			},
 	    parse: function(resp, xhr) {
 	      return resp.SearchResults;
 	    },

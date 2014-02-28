@@ -4,7 +4,7 @@
 <ul class="pledges">
 <% _.each(pledges, function (pledge) { %>
 
-  <li><%= pledge.get('PageUrl') %></li> 
+  <li class="pledge" data-page-short-name="<%= pledge.get('PageUrl').split("/")[1] %>"><%= pledge.get('PageUrl') %></li> 
 
 <% }); %>
 </ul>

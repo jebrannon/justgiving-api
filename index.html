@@ -1,43 +1,9 @@
 <html>
     <head>
         <title>JustGiving API</title>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-
         <script data-main="js/app" src="js/libs/require.js"></script>
     </head>
         <body>
-
             <h1>JustGiving API</h1>
-
-
-
-            <script type="text/javascript">
-                / * Excuse my inline jQuery, for example purposes only! */
-
-                var eventId = 594387;
-                var charityId = 2013;
-                var limit = 100;
-
-                function DoSearch() {   
-                    
-                    // var url = "https://api.justgiving.com/7a69c059/v1/fundraising/pages/Alastair-Morrison";
-                    var url = "https://api.justgiving.com/7a69c059/v1/fundraising/search?charityId=" + charityId + "&eventId=" + eventId + "&pageSize=" + limit + "&format=json&callback=?";
-
-
-
-
-                    jQuery.getJSON(url, function(data) {
-
-                        $('#results').html("&nbsp;");
-
-                        console.log(data)
-
-                    }); 
-                }
-
-                // DoSearch();
-
-            </script>
-            <div id="results"></div>
         </body>
 <html>
