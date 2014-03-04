@@ -1,6 +1,5 @@
 <!-- html/pledge/page.html -->
-<ul class="pledges">
-<% _.each(pledges, function (pledge) { %>
-  <li class="pledge" data-app-cid="<%= pledge.cid %>"><%= pledge.get('PageUrl') %></li> 
-<% }); %>
-</ul> 
+<div id="pledgePage" class="pledge" >
+	<img src="<%= pledge.get('image').url %>"/>
+	<div class="story"><%= pledge.get('story') %></div>
+</div>  

@@ -5,7 +5,8 @@ define([
 	'app/config',
 	'app/collections/pages',
 	'text!html/pledge/item.html',
-	], function($, _, Backbone, Config, PagesCollection, ItemTemplate) {
+	'text!html/pledge/page.html',
+	], function($, _, Backbone, Config, PagesCollection, ItemTemplate, PageTemplate) {
 		var pledgeView = Backbone.View.extend({
 			el: '#pledges',
 			events: {
@@ -21,7 +22,18 @@ define([
 				var that = this;
 				this.pages.fetch({
 					success: function () {
-						$(that.el).append(_.template(ItemTemplate, {pledges: that.pages.models}));
+						var total = that.pages.length;
+						var i = 0;
+						that.pages.each(function(page) {
+							page.fetch({
+								success: function () {
+									i++;
+									if (i === total) {
+										that.output();	
+									}
+								}
+							});
+						})
 					}
 				});
 			},
@@ -30,20 +42,17 @@ define([
 					var that = this;
 					var cid = e.target.getAttribute('data-app-cid');
 					var model = this.pages.get(cid);
-					if (!model.has('activityCharityCreated')) {
-						model.fetch({
-							success: function (e) {
-								that.expand(model);
-							}
-						});
-					}
-					else {
-						this.expand(model);
-					}
+					this.expand(model);
 				}
 			},
+			output: function() {
+				$(this.el).append(_.template(ItemTemplate, {pledges: this.pages.models}));
+			},
 			expand: function(model) {
-				console.log('model', model)
+				if ($('#pledgePage').length > 0) {
+					$('#pledgePage').remove();
+				}
+				$(this.el).prepend(_.template(PageTemplate, {pledge: model}));
 			}
 		});
 		
