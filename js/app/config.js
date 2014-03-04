@@ -5,7 +5,8 @@ define(function () {
         	url: 'https://api.justgiving.com/',
         	eventId: 594387,
           charityId: 2013,
-          limit: 100
+          limit: 100,
+          sortBy: 'TargetAmount'
         }
     }
 });
