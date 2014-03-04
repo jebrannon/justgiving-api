@@ -52,6 +52,9 @@ define([
 				if ($('#pledgePage').length > 0) {
 					$('#pledgePage').remove();
 				}
+
+				console.log(model);
+				
 				$(this.el).prepend(_.template(PageTemplate, {pledge: model}));
 			}
 		});

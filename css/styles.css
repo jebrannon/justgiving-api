@@ -1,0 +1,68 @@
+#pledges {}
+
+#pledges .row {
+	display: table;
+	width: 100%;
+}
+
+#pledges .col {
+	display: table-cell;
+}
+
+#pledges .pledges {
+	margin: 0;
+	padding: 0;
+}
+
+#pledges .pledge {
+	background-color: #D8D8D8;
+	padding: 10px;
+	margin-bottom: 20px;
+}
+
+#pledges .pledge-item {
+	color: #1bad4b;
+	cursor: pointer;
+	list-style-type: none;
+}
+
+#pledges .pledge-item:hover {
+	color: #c02e8a;
+	text-decoration: underline;
+}
+
+#pledges .profile-image {
+	width: 300px;
+}
+
+#pledges .profile-image img {
+	width: 100%;
+}
+
+#pledges .goals {
+	padding-left: 25px;
+	text-align: left;
+	vertical-align: top;
+}
+
+#pledges .percentage span {
+	color: #1bad4b;
+	font-size: 30px;
+}
+
+#pledges .donate-button {
+	background-color: #1bad4b;
+	color: #fff;
+	display: block;
+	float: left;
+	padding: 5px;
+	text-decoration: none;
+}
+
+#pledges .donate-button:hover {
+	background-color: #c02e8a;
+}
+
+#pledges strong {
+	font-weight: 100;
+}
