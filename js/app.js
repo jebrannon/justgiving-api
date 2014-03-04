@@ -9,8 +9,7 @@ require.config({
         text: 'libs/text',
 
         //  Shortcuts
-        views: 'app/views',
-        collections: 'app/collections'
+        html: '../html/',
     },
     shim: {
         underscore: {
@@ -24,5 +23,5 @@ require.config({
 });
 
 require(['app/router', 'app/config'], function(Router, Config) {
-	Router.init();
+    Router.init();
 });

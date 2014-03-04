@@ -5,14 +5,15 @@ define([
 	'app/config',
 	], function($, _, Backbone, Config) {
 		var Page = Backbone.Model.extend({
-			baseUrl: Config.justgiving.url,
-			apiKey: Config.justgiving.apiKey,
-			pageShortName: '',
-			initialize: function() {
-				this.url = this.baseUrl + this.apiKey + "/v1/fundraising/pages/" + this.pageShortName;
+			defaults: {
+				BaseUrl: Config.justgiving.url + Config.justgiving.apiKey + "/v1/fundraising/pages/"
 			},
+			initialize: function() {
+				if (this.has("PageUrl")) {
+					var pageShortName = this.get("PageUrl").split("/")[1];
+					this.url = Config.justgiving.url + Config.justgiving.apiKey + "/v1/fundraising/pages/" + pageShortName;
+				}	
+			}
 		});
-
-		
 		return Page;
 	});

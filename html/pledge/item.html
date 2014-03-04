@@ -1,0 +1,6 @@
+<!-- html/pledge/item.html -->
+<ul class="pledges">
+<% _.each(pledges, function (pledge) { %>
+  <li class="pledge" data-app-cid="<%= pledge.cid %>"><%= pledge.get('PageUrl') %></li> 
+<% }); %>
+</ul> 
