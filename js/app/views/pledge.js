@@ -29,7 +29,7 @@ define([
 								success: function () {
 									i++;
 									if (i === total) {
-										that.output();	
+										that.output();
 									}
 								}
 							});
@@ -46,15 +46,13 @@ define([
 				}
 			},
 			output: function() {
+				$('#loading').hide();
 				$(this.el).append(_.template(ItemTemplate, {pledges: this.pages.models}));
 			},
 			expand: function(model) {
 				if ($('#pledgePage').length > 0) {
 					$('#pledgePage').remove();
 				}
-
-				console.log(model);
-				
 				$(this.el).prepend(_.template(PageTemplate, {pledge: model}));
 			}
 		});
