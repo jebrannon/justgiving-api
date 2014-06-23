@@ -24,6 +24,7 @@ define([
 					success: function () {
 						var total = that.pages.length;
 						var i = 0;
+						console.log(that.pages)
 						that.pages.each(function(page) {
 							page.fetch({
 								success: function () {
@@ -33,7 +34,7 @@ define([
 									}
 								}
 							});
-						})
+						})1
 					}
 				});
 			},
